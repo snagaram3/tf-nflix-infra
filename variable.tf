@@ -24,9 +24,7 @@ variable "bastion_instance_type" {
     default = ""
 }
 
-variable "key_name" {
-  type = string
-}
+
 
 variable "public_subnets" {
     type = list(string)
