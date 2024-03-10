@@ -5,6 +5,20 @@ packages:
 - git
 - vim
 - bind-utils
+
+write_files:
+  - path: /tmp/user-data-script.sh
+    content: |
+      #!/bin/bash
+      yum update -y
+      yum install -y git curl wget
+
+      # Additional configuration or installations can be added here
+      # For example, you might install and configure your application or dependencies.
+
+      # Ensure the script exits with status 0 to indicate success
+      exit 0
+
 runcmd:
-- curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | bash
-- yum -y install sysbench
+  - chmod +x /tmp/user-data-script.sh
+  - /tmp/user-data-script.sh
